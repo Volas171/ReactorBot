@@ -1,35 +1,35 @@
 {
   "guns": [
     {
-      "name": "Dupla",
+      "name": "Double",
       "range": 12.5,
       "type": 3,
       "time": 3,
       "size": 1,
       "build": [
-        ["Cobre",35]
+        ["Copper", 35]
       ],
       "input": [
-        ["Cobre",9],
-        ["Grafite",18],
-        ["Piratita",11],
-        ["Silício",12]
+        ["Copper", 9],
+        ["Graffiti", 18],
+        ["Piratita", 11],
+        ["Silicon", 12]
       ]
     },
     {
-      "name": "Dispersão",
+      "name": "Scatter",
       "range": 20,
       "type": 1,
       "time": 6.67,
       "size": 2,
       "build": [
-        ["Cobre",85],
-        ["Chumbo",45]
+        ["Copper", 85],
+        ["Lead", 45]
       ],
       "input": [
-        ["Sucata",3],
-        ["Chumbo",3],
-        ["Metavidro",3]
+        ["Scrap", 3],
+        ["Lead", 3],
+        ["Metavidro", 3]
       ]
     },
     {
@@ -39,13 +39,13 @@
       "time": 6.67,
       "size": 2,
       "build": [
-        ["Cobre",85],
-        ["Chumbo",45]
+        ["Copper", 85],
+        ["Lead", 45]
       ],
       "input": [
-        ["Sucata",3],
-        ["Chumbo",3],
-        ["Metavidro",3]
+        ["Scrap", 3],
+        ["Lead", 3],
+        ["Metavidro", 3]
       ]
     }
   ]

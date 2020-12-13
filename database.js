@@ -15,7 +15,7 @@ mongoose.connect(process.env.DATABASEURL, {
   }
 
   // Caso tenha sucesso ao conectar informa no console
-  console.log("\nConectado ao banco de dados\n");
+  console.log("\nConnected to the database\n");
   return;
 });
 
@@ -24,7 +24,7 @@ var Warn = new Schema({
   _id: String,
   reason: {
     type: String,
-    default: "Sem razão informada"
+    default: "No reason reported"
   },
   pardon: {
     pardoned: {
@@ -244,12 +244,12 @@ var Clan = new Schema({
   _id: String,
   name: {
     type: String,
-    default: "Sem nome"
+    default: "Unnamed"
   },
   image: String,
   desc: {
     type: String,
-    default: "Sem descrição"
+    default: "Without description"
   },
   level: {
     type: Number,

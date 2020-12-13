@@ -161,10 +161,10 @@ module.exports = {
   },
 
   /**
-   * Retorna uma pagina
-   * @param channel {Channel} o canal onde vai ser enviado 
-   * @param size {Number} quantidade de paginas
-   * @param func {Function} a função realizada por pagina 
+    * Returns a page
+    * @param channel {Channel} the channel where it will be sent
+    * @param size {Number} number of pages
+    * @param func {Function} the function performed per page
    */
   createPage: (channel, size, func) => {
     let page = 1;
@@ -203,7 +203,7 @@ module.exports = {
   },
 
   /**
-   * @param txp {Number} Total de xp do usuario
+   * @param txp {Number} Total xp of user
    * @returns {Object}
    */
   getLevel: (txp) => {
@@ -231,11 +231,11 @@ module.exports = {
   //--------------------------------------------------------------------------------------------------//
   // Clan utils
 
-  /**
-   * Gera um ID para o clã
-   * @param foundersID {String[]} Array com o ID dos fundadores do clã
-   * @returns {String} ID do clã
-   */
+ /**
+     * Generates an ID for the clan
+     * @param foundersID {String []} Array with the ID of the clan founders
+     * @returns {String} Clan ID
+     */
   generateClanID: (foundersID) => {
     let clanID = `${module.exports.formatDate(new Date())}_${foundersID.join("-")}`;
     clanID = md5(clanID);
@@ -245,11 +245,11 @@ module.exports = {
   //--------------------------------------------------------------------------------------------------//
   // Handler utils
 
-  /**
-   * Checa se o caminho fornecido é uma pasta/diretorio
-   * @param {String} path Caminho para o diretorio a ser checado
-   * @returns {Boolean}
-   */
+ /**
+     * Checks if the provided path is a folder / directory
+     * @param {String} path Path to the directory to be checked
+     * @returns {Boolean}
+     */
   isDir: (path) => {
     try {
       var stat = fs.lstatSync(path);
@@ -262,16 +262,16 @@ module.exports = {
   //--------------------------------------------------------------------------------------------------//
   // Error handler utils
 
-  /**
-   * Cria o log de um novo erro
-   * @param err {Error} Erro que aconteceu
-   * @param [fileName=null] {String} Nome do arquivo onde que aconteceu o erro
-   * @param [IDs=null] {Object} IDs relacionados ao erro
-   * @param [IDs.server=null] {String|Number} ID do server
-   * @param [IDs.user=null] {String|Number} ID do usuario
-   * @param [IDs.msg=null] {String|Number} ID da mensagem
-   * @returns {String} String para logar no console
-   */
+ /**
+    * Log a new error
+    * @param err {Error} Error that happened
+    * @param [fileName = null] {String} Name of the file where the error occurred
+    * @param [IDs = null] {Object} IDs related to the error
+    * @param [IDs.server = null] {String | Number} Server ID
+    * @param [IDs.user = null] {String | Number} User ID
+    * @param [IDs.msg = null] {String | Number} Message ID
+    * @returns {String} String to log into the console
+    */
   newError: (err, fileName = "null", IDs = { server: null, user: null, msg: null }) => {
     if (!err) return;
     let folder = fs.existsSync('./errors');
@@ -290,7 +290,7 @@ module.exports = {
       fs.mkdirSync('./errors');
     }
     fs.writeFileSync(`./errors/${errorFileName}`, JSON.stringify(dados, null, 2), { encoding: 'utf8' });
-    return `${chalkClient.error('Erro detectado!')}\nVeja o log em: ./errors/${errorFileName}`;
+    return `${chalkClient.error('Error detected!')}\nVeja o log em: ./errors/${errorFileName}`;
   },
 
   /**
@@ -338,7 +338,7 @@ module.exports = {
    */
   deleteError: (file) => {
     let path = `./errors/${file}`;
-    if (!file || !fs.existsSync(path)) throw new Error('Arquivo invalido!');
+    if (!file || !fs.existsSync(path)) throw new Error('Invalid file!');
     fs.unlink(path, (err) => { if (err) console.log("\n=> " + newError(err, file)); });
     return;
   },
@@ -411,12 +411,12 @@ module.exports = {
       console.log(`=> ${module.exports.newError(new Error(cont), "Utils_newGradient")}`)
     }
 
-    if (!ctx && !isNaN(ctx)) return er('Canvas não foi detectado');
-    if (isNaN(x1)) return er('A posição x1 precisa ser um numero');
-    if (isNaN(y1)) return er('A posição y1 precisa ser um numero');
-    if (isNaN(x2)) return er('A posição x2 precisa ser um numero');
-    if (isNaN(y2)) return er('A posição y2 precisa ser um numero');
-    if (!Array.isArray(arr)) return er('Não foi possivel ver uma array');
+if (! ctx &&! isNaN (ctx)) return er ('Canvas was not detected');
+     if (isNaN (x1)) return er ('Position x1 must be a number');
+     if (isNaN (y1)) return er ('The y1 position must be a number');
+     if (isNaN (x2)) return er ('Position x2 must be a number');
+     if (isNaN (y2)) return er ('The y2 position must be a number');
+     if (! Array.isArray (arr)) return er ('An array could not be seen');
     if (arr.length == 0) return module.exports.toColor();
     if (arr.length == 1) return Array.isArray(arr[0]) ? arr[0][1] : arr[0];
 
@@ -462,7 +462,7 @@ module.exports = {
       return out;
 
     } else {
-      console.log(`=> ${module.exports.newError(new Error("Que poha de entrada que tu boto aqui?"), "Utils_hexToRgb")}`);
+      console.log(`=> ${module.exports.newError(new Error("What input did you drop here?"), "Utils_hexToRgb")} `);
     }
   },
 
@@ -518,7 +518,7 @@ module.exports = {
   jsonChange: async (path, func, min = 0) => {
     let bal = module.exports.jsonPull(path);
 
-    if (!bal) return console.log(`=> ${module.exports.newError(new Error('Não foi encontrado um json no caminho inserido'), "utils_jsonChange")}`);;
+    if (!bal) return console.log(`=> ${module.exports.newError(new Error('Json was not found in the inserted path'), "utils_jsonChange")} `) ;;
 
     const ret = func(bal);
     min = (typeof min == 'boolean' && min) ? Object.keys(bal).length : min;
@@ -538,19 +538,19 @@ module.exports = {
   //--------------------------------------------------------------------------------------------------//
   // Rewarding system utils
 
-  userGive: (userID, toAdd, errFileName = '???') => {
-    //criando função de erro
-    const newError = (desc, fileName, obj) => {
-      console.log(`=> ${module.exports.newError(new Error(desc), fileName + "_userGive", obj)}`);
-    }
+ userGive: (userID, toAdd, errFileName = '???') => {
+      // creating error function
+      const newError = (desc, fileName, obj) => {
+        console.log (`=> $ {module.exports.newError (new Error (desc), fileName +" _userGive ", obj)}`);
+      }
 
-    return newError("Esperando a verificação do king no meu codigo, pra ver se eu n fiz nenhuma merda :P", '???');
+      return newError ("Waiting for the king to check my code, to see if I didn't do any s****: P", '???');
 
-    //fazendo os ifs
-    if (typeof errFileName != "string") return newError("O nome do arquivo não é uma string", "???");
-    if (toAdd) return newError("O id do usuario é um valor estranho", fileName);
-    if (isNaN(money)) return newError("O dinheiro precisa ser um numero", fileName, { user: userID });
-    if (isNaN(xp)) return newError("A experiencia precisa ser um numero", fileName, { user: userID });
+      // doing the ifs
+      if (typeof errFileName! = "string") return newError ("The file name is not a string", "???");
+      if (toAdd) return newError ("The user id is a strange value", fileName);
+      if (isNaN (money)) return newError ("Money must be a number", fileName, {user: userID});
+      if (isNaN (xp)) return newError ("The experiment must be a number", fileName, {user: userID});
 
     //programa
     Users.findById(message.author.id, (err, doc) => {
