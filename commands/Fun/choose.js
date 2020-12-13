@@ -1,48 +1,48 @@
-const Discord = require("discord.js");
+const Discord = require ("discord.js");
 
 module.exports = {
-  // Execução do comando
+  // Execution of the command
   run: (client, botUtils, message, args) => {
     newError = botUtils.newError;
 
     try {
-      // Codigo do comando 
-      if (!args[0])return message.reply('Preciso de escolhas');
+      // Command code
+      if (! args [0]) return message.reply ('I need choices');
 
-      const frases = args.join(' ').split('/')
+      const phrases = args.join ('') .split ('/')
 
-      let escolha = frases[Math.floor(Math.random()*frases.length )]
+      let choice = phrases [Math.floor (Math.random () * phrases.length)]
       let nome = message.author.tag
 
-      let embed = new Discord.MessageEmbed()
-        .setTitle("Escolha")
-        .setDescription("Eu escolho... `" + escolha + "`!")
-        .setFooter("Solicitado por " + nome)
-        .setColor("RANDOM")
-      message.channel.send(embed)
+      let embed = new Discord.MessageEmbed ()
+        .setTitle ("Choose")
+        .setDescription ("I choose ...` "+ choose +" `!")
+        .setFooter ("Requested by" + name)
+        .setColor ("RANDOM")
+      message.channel.send (embed)
 
 
     } catch (err) {
-      let embed = new Discord.MessageEmbed()
-        .setTitle("Erro inesperado")
-        .setDescription("Um erro inesperado aconteceu. por favor contate os ADMs\n\nUm log foi criado com mais informações do erro");
-      message.channel.send(embed);
+      let embed = new Discord.MessageEmbed ()
+        .setTitle ("Unexpected error")
+        .setDescription ("An unexpected error has occurred. please contact the ADMs \n \nA log was created with more information about the error");
+      message.channel.send (embed);
 
       let IDs = {
         server: message.guild.id,
         user: message.author.id,
         msg: message.id
       }
-      console.log(`=> ${newError(err, "choose", IDs)}`);
+      console.log (`=> $ {newError (err," choose ", IDs)}`);
     }
   },
 
-  // Configuração do comando
+  // Command configuration
   config: {
     name: "choose",
     aliases: ['c'],
-    description: "pega uma frase aleatoria (separado por /)",
-    usage: "choose <frase1>[/frase2][/frase3]...",
+    description: "take a random phrase (separated by /)",
+    usage: "choose <frase1> [/ phrase2] [/ phrase3] ...",
     accessableby: "Membross"
   }
 }
