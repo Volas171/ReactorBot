@@ -4,7 +4,10 @@ Bot made for the [MindustryBR](https://discord.gg/UjzPZKe) server.
 
 ## Selfhost
 
-No support will be given for selfhosting the bot
+you will need mongoose also known as mongoDB as database for the bot (the source code is configured to work on heroku
+
+##Installing
+write in console npm install and then do node index.js
 
 ## Contributing
 
