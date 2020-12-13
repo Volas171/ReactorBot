@@ -6,7 +6,7 @@ Bot made for the [MindustryBR](https://discord.gg/UjzPZKe) server.
 
 you will need mongoose also known as mongoDB as database for the bot (the source code is configured to work on heroku
 
-##Installing
+## Installing
 write in console npm install and then do node index.js
 
 ## Contributing
