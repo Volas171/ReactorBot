@@ -1,42 +1,42 @@
-const { Users, Clans } = require("../database.js");
-const botUtils = require("../utils.js");
+const {Users, Clans} = require ("../ database.js");
+const botUtils = require ("../ utils.js");
 
 newError = botUtils.newError;
 
-Users.findById("id do usuario", (errDB, doc) => {
-  // Caso aconteça um erro na database
-  if (errDB) {
-    console.log(`=> ${newError(errDB, "nome do arquivo")}`);
-    return;
-  }
+Users.findById ("user id", (errDB, doc) => {
+   // If there is an error in the database
+   if (errDB) {
+     console.log (`=> $ {newError (errDB," filename ")}`);
+     return;
+   }
 
-  // Caso não exista usuario com esse id na database
-  if (!doc) {
-    // Cria o novo usuario
-    let newUser = new Users({
-      _id: "id do usuario"
-    });
+   // If there is no user with this id in the database
+   if (! doc) {
+     // Create the new user
+     let newUser = new Users ({
+       _id: "user id"
+     });
 
-    // Salva o novo usuario na database
-    newUser.save();
-    return;
-  }
+     // Save the new user to the database
+     newUser.save ();
+     return;
+   }
 
-  try {
-    // Aqui você manipula os dados do usuario
-    // Exemplos
+   try {
+     // Here you manipulate user data
+     // Examples
 
-    // Add 50 de dinheiro para o usuario
-    doc.money += 50;
+     // Add 50 cash to the user
+     doc.money + = 50;
 
-    // Add 50 de xp para o usuario
-    doc.levelSystem.xp += 50;
-    doc.levelSystem.txp += 50;
+     // Add 50 xp for the user
+     doc.levelSystem.xp + = 50;
+     doc.levelSystem.txp + = 50;
 
-    // Salva as alterações na database
-    doc.save();
-  } catch (err) {
-    // Handler de erros
-    console.log(`=> ${newError(err, "nome do arquivo")}`);
-  }
+     // Save changes to the database
+     doc.save ();
+   } catch (err) {
+     // Error handler
+     console.log (`=> $ {newError (err," filename ")}`);
+   }
 });

@@ -1,10 +1,10 @@
-module.exports = ({ client, botUtils }, /* Resto das variaveis */) => {
-  newError = botUtils.newError;
+module.exports = ({client, botUtils}, / * Rest of the variables * /) => {
+   newError = botUtils.newError;
 
-  try {
-    // Codigo do evento
+   try {
+     // Event code
 
-  } catch (err) {
-    console.log(`=> ${newError(err, "nome do evento")}`);
-  }
+   } catch (err) {
+     console.log (`=> $ {newError (err," event name ")}`);
+   }
 }
